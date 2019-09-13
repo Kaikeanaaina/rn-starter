@@ -1,18 +1,30 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 
 const BoxScreen = () => {
     return (
-        <View>
+        <ScrollView>
             <View style={styles.boxModelObjectViewStyle}>
-                <Text style={styles.boxModelObjectTextStyle}>boxscreen</Text>
+                <Text style={styles.boxModelObjectTextStyle}>Box Screen</Text>
             </View>
             <View style={styles.flexBoxViewStyle}>
                 <Text style={styles.flexOneBoxTextStyle}>Child #1</Text>
                 <Text style={styles.flexTwoBoxTextStyle}>Child #2</Text>
                 <Text style={styles.flexThreeBoxTextStyle}>Child #3</Text>
             </View>
-        </View>
+            <View style={styles.positionViewStyle}>
+                <Text style={styles.positionOneTextStyle}>Child #1</Text>
+                <Text style={styles.positionTwoTextStyle}>Child #2</Text>
+                <Text style={styles.positionThreeTextStyle}>Child #3</Text>
+            </View>
+            <View style={styles.ViewParentContainer}>
+                <View style={styles.ViewOne} />
+                <View style={styles.ViewTwoParent}>
+                    <View style={styles.ViewTwo} />
+                </View>
+                <View style={styles.ViewThree} />
+            </View>
+        </ScrollView>
     )
 }
 
@@ -21,10 +33,11 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: 'black'
     },
-    boxModelObjectTextStyle:{
+    boxModelObjectTextStyle: {
         borderWidth: 10,
         borderColor: 'red',
         margin: 20,
+        //marginHorizontal, marginVertical
     },
     /////////////////////////////////////////////////////////////////////////
     flexBoxViewStyle: {
@@ -55,6 +68,59 @@ const styles = StyleSheet.create({
         borderColor: 'red',
         //flex: 2,
     },
+    ////////////////////////////////////////////////////////////////////
+    positionViewStyle: {
+        borderWidth: 3,
+        borderColor: 'black',
+        height: 200,
+    },
+    positionOneTextStyle: {
+        borderWidth: 3,
+        borderColor: 'red'
+    },
+    positionTwoTextStyle: {
+        borderWidth: 3,
+        borderColor: 'red',
+        fontSize: 18,
+        ...StyleSheet.absoluteFillObject,
+        // // this is the same as all together - top: 0, bottom: 0, left: 0, right: 0
+    },
+    positionThreeTextStyle: {
+        borderWidth: 3,
+        borderColor: 'red',
+    },
+    //////////////////////////////////////////////////////////////////////
+    ViewParentContainer: {
+        borderWidth: 3,
+        borderColor: 'black',
+        height: 200,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    ViewOne: {
+        height: 50,
+        width: 50,
+        backgroundColor: 'red'
+    },
+    ViewTwoParent: {
+        height: 100,
+        justifyContent: 'flex-end'
+    },
+    ViewTwo: {
+        height: 50,
+        width: 50,
+        backgroundColor: 'green',
+        //marginTop: 50
+        // or
+        //alignSelf: 'flex-end'
+        // or
+        // top: 50
+    },
+    ViewThree: {
+        height: 50,
+        width: 50,
+        backgroundColor: 'purple'
+    }
 })
 
 
